@@ -117,7 +117,6 @@ function App() {
 
       {/* Hero Section */}
       <section className="mx-auto grid max-w-[1400px] items-center gap-10 px-4 py-12 sm:px-6 md:py-14 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:py-20">
-        {/* Left Side */}
         <div>
           <div className="mb-6 inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-500 sm:text-base">
             <span className="mr-2 text-blue-500">●</span>
@@ -146,7 +145,6 @@ function App() {
           </div>
         </div>
 
-        {/* Right Side Image */}
         <div className="flex justify-center lg:justify-end">
           <div className="relative h-[300px] w-full max-w-[620px] overflow-hidden bg-[#f3f4fb] sm:h-[380px] md:h-[450px] lg:h-[520px]">
             <img
@@ -214,7 +212,6 @@ function App() {
               key={index}
               className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md"
             >
-              {/* Icon + Badge */}
               <div className="flex items-center justify-between">
                 <span className="text-2xl">{item.icon}</span>
                 <span
@@ -224,15 +221,12 @@ function App() {
                 </span>
               </div>
 
-              {/* Title */}
               <h3 className="mt-4 text-2xl font-semibold text-[#2d2a6e]">
                 {item.title}
               </h3>
 
-              {/* Description */}
               <p className="mt-3 text-gray-500">{item.desc}</p>
 
-              {/* Price */}
               <h4 className="mt-5 text-3xl font-bold text-[#2d2a6e]">
                 {item.price}
                 <span className="text-lg font-normal text-gray-400">
@@ -240,14 +234,12 @@ function App() {
                 </span>
               </h4>
 
-              {/* Features */}
               <ul className="mt-5 space-y-2 text-gray-500">
                 {item.features.map((feature, i) => (
                   <li key={i}>✓ {feature}</li>
                 ))}
               </ul>
 
-              {/* Button */}
               <button className="mt-6 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-500 py-3 text-white">
                 Buy Now
               </button>
@@ -255,88 +247,113 @@ function App() {
           ))}
         </div>
       </section>
+
+      {/* Steps Section */}
+      <section className="py-16 bg-gray-50 text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-2">
+          Get Started In 3 Steps
+        </h2>
+        <p className="text-gray-500 mb-12">
+          Start using premium digital tools in minutes, not hours.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+          <div className="bg-white p-8 rounded-xl shadow-md relative">
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold">
+              01
+            </div>
+
+            <div className="flex justify-center mb-4">
+              <div className="bg-blue-100 p-4 rounded-full">
+                <svg
+                  className="w-10 h-10 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5.121 17.804A9 9 0 1118.88 17.804M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <h3 className="font-semibold text-lg text-gray-800 mb-2">
+              Create Account
+            </h3>
+            <p className="text-gray-500 text-sm">
+              Sign up for free in seconds. No credit card required to get
+              started.
+            </p>
+          </div>
+
+          <div className="bg-white p-8 rounded-xl shadow-md relative">
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold">
+              02
+            </div>
+
+            <div className="flex justify-center mb-4">
+              <div className="bg-blue-100 p-4 rounded-full">
+                <svg
+                  className="w-10 h-10 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14L4 7m8 4v10"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <h3 className="font-semibold text-lg text-gray-800 mb-2">
+              Choose Products
+            </h3>
+            <p className="text-gray-500 text-sm">
+              Browse our catalog and select the tools that fit your needs.
+            </p>
+          </div>
+
+          <div className="bg-white p-8 rounded-xl shadow-md relative">
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold">
+              03
+            </div>
+
+            <div className="flex justify-center mb-4">
+              <div className="bg-blue-100 p-4 rounded-full">
+                <svg
+                  className="w-10 h-10 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9.75 17L4.5 21l4-5.25M14.25 17l5.25 4-4-5.25M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <h3 className="font-semibold text-lg text-gray-800 mb-2">
+              Start Creating
+            </h3>
+            <p className="text-gray-500 text-sm">
+              Download and start using your premium tools immediately.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
-  );
-}
-
-export default App;
-function App() {
-  return (
-    <section className="py-16 bg-gray-50 text-center">
-      <h2 className="text-3xl font-bold text-gray-800 mb-2">
-        Get Started In 3 Steps
-      </h2>
-      <p className="text-gray-500 mb-12">
-        Start using premium digital tools in minutes, not hours.
-      </p>
-
-      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
-
-        {/* Card 1 */}
-        <div className="bg-white p-8 rounded-xl shadow-md relative">
-          <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold">
-            01
-          </div>
-
-          <div className="flex justify-center mb-4">
-            <div className="bg-blue-100 p-4 rounded-full">
-              <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                  d="M5.121 17.804A9 9 0 1118.88 17.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-          </div>
-
-          <h3 className="font-semibold text-lg text-gray-800 mb-2">Create Account</h3>
-          <p className="text-gray-500 text-sm">
-            Sign up for free in seconds. No credit card required to get started.
-          </p>
-        </div>
-
-        {/* Card 2 */}
-        <div className="bg-white p-8 rounded-xl shadow-md relative">
-          <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold">
-            02
-          </div>
-
-          <div className="flex justify-center mb-4">
-            <div className="bg-blue-100 p-4 rounded-full">
-              <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14L4 7m8 4v10" />
-              </svg>
-            </div>
-          </div>
-
-          <h3 className="font-semibold text-lg text-gray-800 mb-2">Choose Products</h3>
-          <p className="text-gray-500 text-sm">
-            Browse our catalog and select the tools that fit your needs.
-          </p>
-        </div>
-
-        {/* Card 3 */}
-        <div className="bg-white p-8 rounded-xl shadow-md relative">
-          <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold">
-            03
-          </div>
-
-          <div className="flex justify-center mb-4">
-            <div className="bg-blue-100 p-4 rounded-full">
-              <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                  d="M9.75 17L4.5 21l4-5.25M14.25 17l5.25 4-4-5.25M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" />
-              </svg>
-            </div>
-          </div>
-
-          <h3 className="font-semibold text-lg text-gray-800 mb-2">Start Creating</h3>
-          <p className="text-gray-500 text-sm">
-            Download and start using your premium tools immediately.
-          </p>
-        </div>
-
-      </div>
-    </section>
   );
 }
 
