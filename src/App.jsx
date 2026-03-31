@@ -86,6 +86,56 @@ function App() {
     },
   ];
 
+  const pricingPlans = [
+    {
+      name: "Starter",
+      subtitle: "Perfect for getting started",
+      price: "$0",
+      duration: "/Month",
+      features: [
+        "Access to 10 free tools",
+        "Basic templates",
+        "Community support",
+        "1 project per month",
+      ],
+      button: "Get Started Free",
+      highlighted: false,
+    },
+    {
+      name: "Pro",
+      subtitle: "Best for professionals",
+      price: "$29",
+      duration: "/Month",
+      badge: "Most Popular",
+      features: [
+        "Access to all premium tools",
+        "Unlimited templates",
+        "Priority support",
+        "Unlimited projects",
+        "Cloud sync",
+        "Advanced analytics",
+      ],
+      button: "Start Pro Trial",
+      highlighted: true,
+    },
+    {
+      name: "Enterprise",
+      subtitle: "For teams and businesses",
+      price: "$99",
+      duration: "/Month",
+      features: [
+        "Everything in Pro",
+        "Team collaboration",
+        "Custom integrations",
+        "Dedicated support",
+        "SLA guarantee",
+        "Custom branding",
+      ],
+      button: "Contact Sales",
+      highlighted: false,
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}
@@ -249,24 +299,24 @@ function App() {
       </section>
 
       {/* Steps Section */}
-      <section className="py-16 bg-gray-50 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-2">
+      <section className="bg-gray-50 py-16 text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-2 sm:text-4xl lg:text-5xl">
           Get Started In 3 Steps
         </h2>
-        <p className="text-gray-500 mb-12">
+        <p className="text-gray-500 mb-12 text-base sm:text-lg">
           Start using premium digital tools in minutes, not hours.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
-          <div className="bg-white p-8 rounded-xl shadow-md relative">
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 md:grid-cols-3">
+          <div className="relative rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+            <div className="absolute -top-5 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white">
               01
             </div>
 
-            <div className="flex justify-center mb-4">
-              <div className="bg-blue-100 p-4 rounded-full">
+            <div className="mb-5 flex justify-center">
+              <div className="rounded-full bg-indigo-50 p-5">
                 <svg
-                  className="w-10 h-10 text-blue-600"
+                  className="h-10 w-10 text-blue-600"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -281,24 +331,24 @@ function App() {
               </div>
             </div>
 
-            <h3 className="font-semibold text-lg text-gray-800 mb-2">
+            <h3 className="mb-2 text-2xl font-semibold text-[#2d2a6e]">
               Create Account
             </h3>
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-400">
               Sign up for free in seconds. No credit card required to get
               started.
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-xl shadow-md relative">
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold">
+          <div className="relative rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+            <div className="absolute -top-5 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white">
               02
             </div>
 
-            <div className="flex justify-center mb-4">
-              <div className="bg-blue-100 p-4 rounded-full">
+            <div className="mb-5 flex justify-center">
+              <div className="rounded-full bg-indigo-50 p-5">
                 <svg
-                  className="w-10 h-10 text-blue-600"
+                  className="h-10 w-10 text-blue-600"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -313,23 +363,23 @@ function App() {
               </div>
             </div>
 
-            <h3 className="font-semibold text-lg text-gray-800 mb-2">
+            <h3 className="mb-2 text-2xl font-semibold text-[#2d2a6e]">
               Choose Products
             </h3>
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-400">
               Browse our catalog and select the tools that fit your needs.
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-xl shadow-md relative">
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold">
+          <div className="relative rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+            <div className="absolute -top-5 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white">
               03
             </div>
 
-            <div className="flex justify-center mb-4">
-              <div className="bg-blue-100 p-4 rounded-full">
+            <div className="mb-5 flex justify-center">
+              <div className="rounded-full bg-indigo-50 p-5">
                 <svg
-                  className="w-10 h-10 text-blue-600"
+                  className="h-10 w-10 text-blue-600"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -344,13 +394,93 @@ function App() {
               </div>
             </div>
 
-            <h3 className="font-semibold text-lg text-gray-800 mb-2">
+            <h3 className="mb-2 text-2xl font-semibold text-[#2d2a6e]">
               Start Creating
             </h3>
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-400">
               Download and start using your premium tools immediately.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="bg-white py-16 text-center lg:py-20">
+        <h2 className="text-3xl font-bold text-[#2d2a6e] sm:text-4xl lg:text-5xl">
+          Simple, Transparent Pricing
+        </h2>
+        <p className="mx-auto mt-4 max-w-[700px] text-base text-gray-500 sm:text-lg">
+          Choose the plan that fits your needs. Upgrade or downgrade anytime.
+        </p>
+
+        <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-8 px-4 md:grid-cols-3">
+          {pricingPlans.map((plan, index) => (
+            <div
+              key={index}
+              className={`relative rounded-2xl border p-8 text-left shadow-sm ${
+                plan.highlighted
+                  ? "scale-100 border-transparent bg-gradient-to-r from-blue-600 to-purple-500 text-white lg:scale-105"
+                  : "border-gray-200 bg-white"
+              }`}
+            >
+              {plan.badge && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-orange-100 px-4 py-1 text-xs font-medium text-orange-500 shadow">
+                  {plan.badge}
+                </span>
+              )}
+
+              <h3
+                className={`text-2xl font-semibold ${
+                  plan.highlighted ? "text-white" : "text-[#2d2a6e]"
+                }`}
+              >
+                {plan.name}
+              </h3>
+
+              <p
+                className={`mt-2 ${
+                  plan.highlighted ? "text-white/80" : "text-gray-500"
+                }`}
+              >
+                {plan.subtitle}
+              </p>
+
+              <h4
+                className={`mt-6 text-5xl font-bold ${
+                  plan.highlighted ? "text-white" : "text-[#2d2a6e]"
+                }`}
+              >
+                {plan.price}
+                <span
+                  className={`text-2xl font-normal ${
+                    plan.highlighted ? "text-white/80" : "text-gray-400"
+                  }`}
+                >
+                  {plan.duration}
+                </span>
+              </h4>
+
+              <ul
+                className={`mt-6 space-y-3 ${
+                  plan.highlighted ? "text-white/90" : "text-gray-500"
+                }`}
+              >
+                {plan.features.map((feature, i) => (
+                  <li key={i}>✓ {feature}</li>
+                ))}
+              </ul>
+
+              <button
+                className={`mt-8 w-full rounded-full py-3 font-medium ${
+                  plan.highlighted
+                    ? "bg-white text-[#2d2a6e]"
+                    : "bg-gradient-to-r from-blue-600 to-purple-500 text-white"
+                }`}
+              >
+                {plan.button}
+              </button>
+            </div>
+          ))}
         </div>
       </section>
     </div>
