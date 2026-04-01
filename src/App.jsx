@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [activeTab, setActiveTab] = useState("products");
@@ -150,14 +152,22 @@ function App() {
   const handleAddToCart = (product) => {
     setCartItems((prev) => [...prev, product]);
     setActiveTab("cart");
+    toast.success(`${product.title} added to cart`);
   };
 
   const handleRemoveFromCart = (indexToRemove) => {
+    const removedItem = cartItems[indexToRemove];
     setCartItems((prev) => prev.filter((_, index) => index !== indexToRemove));
+    toast.error(`${removedItem.title} removed from cart`);
   };
 
   const handleCheckout = () => {
+    if (cartItems.length === 0) {
+      toast.info("Your cart is already empty");
+      return;
+    }
     setCartItems([]);
+    toast.success("Proceed to checkout successful. Cart cleared.");
   };
 
   const totalPrice = useMemo(() => {
@@ -166,6 +176,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      <ToastContainer position="top-right" autoClose={2000} />
+
       {/* Navbar */}
       <nav className="w-full border-b border-gray-200 bg-white">
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
@@ -218,7 +230,7 @@ function App() {
 
           <p className="mt-5 max-w-[700px] text-base leading-8 text-gray-400 sm:text-lg md:text-xl lg:mt-6 lg:text-[22px] lg:leading-10">
             Access premium AI tools, design assets, templates, and productivity
-            software—all in one place. Start creating faster today.
+            software-all in one place. Start creating faster today.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap lg:mt-10 lg:gap-5">
