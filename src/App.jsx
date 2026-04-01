@@ -485,32 +485,32 @@ function App() {
       </section>
 
       {/* CTA Section */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-        <div className="mx-auto max-w-6xl rounded-[32px] bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-16 text-center text-white shadow-lg sm:px-10 lg:px-16 lg:py-20">
-          <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-6xl">
-            Ready To Transform Your Workflow?
-          </h2>
+<section className="px-0 py-16 sm:px-0 lg:px-0 lg:py-20">
+  <div className="w-full rounded-none bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-16 text-center text-white shadow-lg sm:px-10 lg:px-16 lg:py-20">
+    <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-6xl">
+      Ready To Transform Your Workflow?
+    </h2>
 
-          <p className="mx-auto mt-5 max-w-3xl text-sm text-white/90 sm:text-base lg:text-2xl lg:leading-10">
-            Join thousands of professionals who are already using Digitools to
-            work smarter. Start your free trial today.
-          </p>
+    <p className="mx-auto mt-5 max-w-3xl text-sm text-white/90 sm:text-base lg:text-2xl lg:leading-10">
+      Join thousands of professionals who are already using Digitools to
+      work smarter. Start your free trial today.
+    </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-10 lg:gap-6">
-            <button className="rounded-full bg-white px-8 py-3 text-base font-medium text-[#2d2a6e] shadow sm:px-10 sm:py-4 lg:text-lg">
-              Explore Products
-            </button>
+    <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-10 lg:gap-6">
+      <button className="rounded-full bg-white px-8 py-3 text-base font-medium text-[#2d2a6e] shadow sm:px-10 sm:py-4 lg:text-lg">
+        Explore Products
+      </button>
 
-            <button className="rounded-full border border-white px-8 py-3 text-base font-medium text-white sm:px-10 sm:py-4 lg:text-lg">
-              View Pricing
-            </button>
-          </div>
+      <button className="rounded-full border border-white px-8 py-3 text-base font-medium text-white sm:px-10 sm:py-4 lg:text-lg">
+        View Pricing
+      </button>
+    </div>
 
-          <p className="mt-8 text-sm text-white/80 sm:text-base lg:text-xl">
-            14-day free trial • No credit card required • Cancel anytime
-          </p>
-        </div>
-      </section>
+    <p className="mt-8 text-sm text-white/80 sm:text-base lg:text-xl">
+      14-day free trial • No credit card required • Cancel anytime
+    </p>
+  </div>
+</section>
     </div>
   );
 }
