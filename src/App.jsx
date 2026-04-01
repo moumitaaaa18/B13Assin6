@@ -300,10 +300,10 @@ function App() {
 
       {/* Steps Section */}
       <section className="bg-gray-50 py-16 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-2 sm:text-4xl lg:text-5xl">
+        <h2 className="mb-2 text-3xl font-bold text-gray-800 sm:text-4xl lg:text-5xl">
           Get Started In 3 Steps
         </h2>
-        <p className="text-gray-500 mb-12 text-base sm:text-lg">
+        <p className="mb-12 text-base text-gray-500 sm:text-lg">
           Start using premium digital tools in minutes, not hours.
         </p>
 
@@ -481,6 +481,34 @@ function App() {
               </button>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div className="mx-auto max-w-6xl rounded-[32px] bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-16 text-center text-white shadow-lg sm:px-10 lg:px-16 lg:py-20">
+          <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-6xl">
+            Ready To Transform Your Workflow?
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-3xl text-sm text-white/90 sm:text-base lg:text-2xl lg:leading-10">
+            Join thousands of professionals who are already using Digitools to
+            work smarter. Start your free trial today.
+          </p>
+
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-10 lg:gap-6">
+            <button className="rounded-full bg-white px-8 py-3 text-base font-medium text-[#2d2a6e] shadow sm:px-10 sm:py-4 lg:text-lg">
+              Explore Products
+            </button>
+
+            <button className="rounded-full border border-white px-8 py-3 text-base font-medium text-white sm:px-10 sm:py-4 lg:text-lg">
+              View Pricing
+            </button>
+          </div>
+
+          <p className="mt-8 text-sm text-white/80 sm:text-base lg:text-xl">
+            14-day free trial • No credit card required • Cancel anytime
+          </p>
         </div>
       </section>
     </div>
