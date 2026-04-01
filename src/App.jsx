@@ -1,4 +1,9 @@
+import { useState } from "react";
+
 function App() {
+  const [activeTab, setActiveTab] = useState("products");
+  const [cartItems] = useState([]);
+
   const products = [
     {
       title: "AI Writing Pro",
@@ -238,7 +243,7 @@ function App() {
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Products Section with Toggling */}
       <section className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <h2 className="text-center text-3xl font-bold text-[#2d2a6e] sm:text-4xl lg:text-5xl">
           Premium Digital Tools
@@ -250,52 +255,92 @@ function App() {
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-          <button className="rounded-full bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-3 text-sm font-medium text-white sm:text-base">
+          <button
+            onClick={() => setActiveTab("products")}
+            className={`rounded-full px-6 py-3 text-sm font-medium sm:text-base ${
+              activeTab === "products"
+                ? "bg-gradient-to-r from-blue-600 to-purple-500 text-white"
+                : "bg-gray-100 text-gray-600"
+            }`}
+          >
             Products
           </button>
-          <button className="text-base text-gray-600 sm:text-lg">Cart (2)</button>
+
+          <button
+            onClick={() => setActiveTab("cart")}
+            className={`rounded-full px-6 py-3 text-sm font-medium sm:text-base ${
+              activeTab === "cart"
+                ? "bg-gradient-to-r from-blue-600 to-purple-500 text-white"
+                : "bg-gray-100 text-gray-600"
+            }`}
+          >
+            Cart
+          </button>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {products.map((item, index) => (
-            <div
-              key={index}
-              className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-2xl">{item.icon}</span>
-                <span
-                  className={`rounded-full px-3 py-1 text-xs font-medium ${item.badgeColor}`}
-                >
-                  {item.badge}
-                </span>
+        {activeTab === "products" ? (
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {products.map((item, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl">{item.icon}</span>
+                  <span
+                    className={`rounded-full px-3 py-1 text-xs font-medium ${item.badgeColor}`}
+                  >
+                    {item.badge}
+                  </span>
+                </div>
+
+                <h3 className="mt-4 text-2xl font-semibold text-[#2d2a6e]">
+                  {item.title}
+                </h3>
+
+                <p className="mt-3 text-gray-500">{item.desc}</p>
+
+                <h4 className="mt-5 text-3xl font-bold text-[#2d2a6e]">
+                  {item.price}
+                  <span className="text-lg font-normal text-gray-400">
+                    {item.type}
+                  </span>
+                </h4>
+
+                <ul className="mt-5 space-y-2 text-gray-500">
+                  {item.features.map((feature, i) => (
+                    <li key={i}>✓ {feature}</li>
+                  ))}
+                </ul>
+
+                <button className="mt-6 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-500 py-3 text-white">
+                  Buy Now
+                </button>
               </div>
-
-              <h3 className="mt-4 text-2xl font-semibold text-[#2d2a6e]">
-                {item.title}
-              </h3>
-
-              <p className="mt-3 text-gray-500">{item.desc}</p>
-
-              <h4 className="mt-5 text-3xl font-bold text-[#2d2a6e]">
-                {item.price}
-                <span className="text-lg font-normal text-gray-400">
-                  {item.type}
-                </span>
-              </h4>
-
-              <ul className="mt-5 space-y-2 text-gray-500">
-                {item.features.map((feature, i) => (
-                  <li key={i}>✓ {feature}</li>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-12 rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-10 text-center">
+            {cartItems.length === 0 ? (
+              <>
+                <h3 className="text-2xl font-semibold text-[#2d2a6e]">
+                  Your cart is empty
+                </h3>
+                <p className="mt-3 text-gray-500">
+                  No products added to cart yet.
+                </p>
+              </>
+            ) : (
+              <div className="space-y-4">
+                {cartItems.map((item, index) => (
+                  <div key={index} className="rounded-xl bg-white p-4 shadow">
+                    {item.title}
+                  </div>
                 ))}
-              </ul>
-
-              <button className="mt-6 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-500 py-3 text-white">
-                Buy Now
-              </button>
-            </div>
-          ))}
-        </div>
+              </div>
+            )}
+          </div>
+        )}
       </section>
 
       {/* Steps Section */}
@@ -485,117 +530,121 @@ function App() {
       </section>
 
       {/* CTA Section */}
-<section className="px-0 py-16 sm:px-0 lg:px-0 lg:py-20">
-  <div className="w-full rounded-none bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-16 text-center text-white shadow-lg sm:px-10 lg:px-16 lg:py-20">
-    <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-6xl">
-      Ready To Transform Your Workflow?
-    </h2>
+      <section className="px-0 py-16 sm:px-0 lg:px-0 lg:py-20">
+        <div className="w-full rounded-none bg-gradient-to-r from-blue-600 to-purple-500 px-6 py-16 text-center text-white shadow-lg sm:px-10 lg:px-16 lg:py-20">
+          <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-6xl">
+            Ready To Transform Your Workflow?
+          </h2>
 
-    <p className="mx-auto mt-5 max-w-3xl text-sm text-white/90 sm:text-base lg:text-2xl lg:leading-10">
-      Join thousands of professionals who are already using Digitools to
-      work smarter. Start your free trial today.
-    </p>
+          <p className="mx-auto mt-5 max-w-3xl text-sm text-white/90 sm:text-base lg:text-2xl lg:leading-10">
+            Join thousands of professionals who are already using Digitools to
+            work smarter. Start your free trial today.
+          </p>
 
-    <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-10 lg:gap-6">
-      <button className="rounded-full bg-white px-8 py-3 text-base font-medium text-[#2d2a6e] shadow sm:px-10 sm:py-4 lg:text-lg">
-        Explore Products
-      </button>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-10 lg:gap-6">
+            <button className="rounded-full bg-white px-8 py-3 text-base font-medium text-[#2d2a6e] shadow sm:px-10 sm:py-4 lg:text-lg">
+              Explore Products
+            </button>
 
-      <button className="rounded-full border border-white px-8 py-3 text-base font-medium text-white sm:px-10 sm:py-4 lg:text-lg">
-        View Pricing
-      </button>
-    </div>
-
-    <p className="mt-8 text-sm text-white/80 sm:text-base lg:text-xl">
-      14-day free trial • No credit card required • Cancel anytime
-    </p>
-  </div>
-</section>
-{/* Footer */}
-<footer className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white pt-16 pb-8">
-  <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
-    <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
-      {/* Left */}
-      <div className="lg:col-span-2">
-        <h2 className="text-4xl font-extrabold">DigiTools</h2>
-        <p className="mt-4 max-w-md text-gray-300">
-          Premium digital tools for creators, professionals, and businesses.
-          Work smarter with our suite of powerful tools.
-        </p>
-      </div>
-
-      {/* Product */}
-      <div>
-        <h3 className="mb-4 text-lg font-semibold">Product</h3>
-        <ul className="space-y-2 text-gray-300">
-          <li>Features</li>
-          <li>Pricing</li>
-          <li>Templates</li>
-          <li>Integrations</li>
-        </ul>
-      </div>
-
-      {/* Company */}
-      <div>
-        <h3 className="mb-4 text-lg font-semibold">Company</h3>
-        <ul className="space-y-2 text-gray-300">
-          <li>About</li>
-          <li>Blog</li>
-          <li>Careers</li>
-          <li>Press</li>
-        </ul>
-      </div>
-
-      {/* Resources */}
-      <div>
-        <h3 className="mb-4 text-lg font-semibold">Resources</h3>
-        <ul className="space-y-2 text-gray-300">
-          <li>Documentation</li>
-          <li>Help Center</li>
-          <li>Community</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-
-      {/* Social */}
-      <div>
-        <h3 className="mb-4 text-lg font-semibold">Social Links</h3>
-        <div className="flex gap-4">
-          {/* YouTube */}
-          <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white text-black transition hover:scale-110">
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.7 15.5v-7l6.3 3.5-6.3 3.5z" />
-            </svg>
+            <button className="rounded-full border border-white px-8 py-3 text-base font-medium text-white sm:px-10 sm:py-4 lg:text-lg">
+              View Pricing
+            </button>
           </div>
 
-          {/* Facebook */}
-          <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white text-black transition hover:scale-110">
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7v-3h3.5V9.5c0-3.4 2-5.3 5.1-5.3 1.5 0 3 .3 3 .3v3.3h-1.7c-1.7 0-2.2 1-2.2 2.1V12H18l-.5 3h-2.8v7A10 10 0 0 0 22 12z" />
-            </svg>
+          <p className="mt-8 text-sm text-white/80 sm:text-base lg:text-xl">
+            14-day free trial • No credit card required • Cancel anytime
+          </p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-r from-blue-900 to-indigo-900 pt-16 pb-8 text-white">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
+            <div className="lg:col-span-2">
+              <h2 className="text-4xl font-extrabold">DigiTools</h2>
+              <p className="mt-4 max-w-md text-gray-300">
+                Premium digital tools for creators, professionals, and
+                businesses. Work smarter with our suite of powerful tools.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">Product</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li>Features</li>
+                <li>Pricing</li>
+                <li>Templates</li>
+                <li>Integrations</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">Company</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li>About</li>
+                <li>Blog</li>
+                <li>Careers</li>
+                <li>Press</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">Resources</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li>Documentation</li>
+                <li>Help Center</li>
+                <li>Community</li>
+                <li>Contact</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">Social Links</h3>
+              <div className="flex gap-4">
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white text-black transition hover:scale-110">
+                  <svg
+                    className="h-5 w-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.7 15.5v-7l6.3 3.5-6.3 3.5z" />
+                  </svg>
+                </div>
+
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white text-black transition hover:scale-110">
+                  <svg
+                    className="h-5 w-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7v-3h3.5V9.5c0-3.4 2-5.3 5.1-5.3 1.5 0 3 .3 3 .3v3.3h-1.7c-1.7 0-2.2 1-2.2 2.1V12H18l-.5 3h-2.8v7A10 10 0 0 0 22 12z" />
+                  </svg>
+                </div>
+
+                <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white text-black transition hover:scale-110">
+                  <svg
+                    className="h-5 w-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M18.9 2H22l-7.5 8.6L23 22h-6.8l-5.3-7-6.1 7H2l8.1-9.3L1 2h6.9l4.8 6.4L18.9 2zm-2.4 18h2.2L7.6 4H5.3l11.2 16z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* X */}
-          <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white text-black transition hover:scale-110">
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M18.9 2H22l-7.5 8.6L23 22h-6.8l-5.3-7-6.1 7H2l8.1-9.3L1 2h6.9l4.8 6.4L18.9 2zm-2.4 18h2.2L7.6 4H5.3l11.2 16z" />
-            </svg>
+          <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-gray-300 md:flex-row">
+            <p>© 2026 Digitools. All rights reserved.</p>
+
+            <div className="flex gap-6">
+              <span>Privacy Policy</span>
+              <span>Terms of Service</span>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    {/* Bottom */}
-    <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-gray-300 md:flex-row">
-      <p>© 2026 Digitools. All rights reserved.</p>
-
-      <div className="flex gap-6">
-        <span>Privacy Policy</span>
-        <span>Terms of Service</span>
-      </div>
-    </div>
-  </div>
-</footer>
+      </footer>
     </div>
   );
 }
