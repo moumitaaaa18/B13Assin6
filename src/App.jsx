@@ -515,7 +515,6 @@ function App() {
 <footer className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white pt-16 pb-8">
   <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
     <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
-      
       {/* Left */}
       <div className="lg:col-span-2">
         <h2 className="text-4xl font-extrabold">DigiTools</h2>
@@ -561,22 +560,33 @@ function App() {
       {/* Social */}
       <div>
         <h3 className="mb-4 text-lg font-semibold">Social Links</h3>
-        <div className="flex gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black">
-            ▶
+        <div className="flex gap-4">
+          {/* YouTube */}
+          <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white text-black transition hover:scale-110">
+            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.7 15.5v-7l6.3 3.5-6.3 3.5z" />
+            </svg>
           </div>
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black">
-            f
+
+          {/* Facebook */}
+          <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white text-black transition hover:scale-110">
+            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7v-3h3.5V9.5c0-3.4 2-5.3 5.1-5.3 1.5 0 3 .3 3 .3v3.3h-1.7c-1.7 0-2.2 1-2.2 2.1V12H18l-.5 3h-2.8v7A10 10 0 0 0 22 12z" />
+            </svg>
           </div>
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black">
-            X
+
+          {/* X */}
+          <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white text-black transition hover:scale-110">
+            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.9 2H22l-7.5 8.6L23 22h-6.8l-5.3-7-6.1 7H2l8.1-9.3L1 2h6.9l4.8 6.4L18.9 2zm-2.4 18h2.2L7.6 4H5.3l11.2 16z" />
+            </svg>
           </div>
         </div>
       </div>
     </div>
 
     {/* Bottom */}
-    <div className="mt-12 border-t border-white/20 pt-6 flex flex-col items-center justify-between gap-4 text-gray-300 md:flex-row">
+    <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-gray-300 md:flex-row">
       <p>© 2026 Digitools. All rights reserved.</p>
 
       <div className="flex gap-6">
