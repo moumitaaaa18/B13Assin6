@@ -511,6 +511,81 @@ function App() {
     </p>
   </div>
 </section>
+{/* Footer */}
+<footer className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white pt-16 pb-8">
+  <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
+    <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
+      
+      {/* Left */}
+      <div className="lg:col-span-2">
+        <h2 className="text-4xl font-extrabold">DigiTools</h2>
+        <p className="mt-4 max-w-md text-gray-300">
+          Premium digital tools for creators, professionals, and businesses.
+          Work smarter with our suite of powerful tools.
+        </p>
+      </div>
+
+      {/* Product */}
+      <div>
+        <h3 className="mb-4 text-lg font-semibold">Product</h3>
+        <ul className="space-y-2 text-gray-300">
+          <li>Features</li>
+          <li>Pricing</li>
+          <li>Templates</li>
+          <li>Integrations</li>
+        </ul>
+      </div>
+
+      {/* Company */}
+      <div>
+        <h3 className="mb-4 text-lg font-semibold">Company</h3>
+        <ul className="space-y-2 text-gray-300">
+          <li>About</li>
+          <li>Blog</li>
+          <li>Careers</li>
+          <li>Press</li>
+        </ul>
+      </div>
+
+      {/* Resources */}
+      <div>
+        <h3 className="mb-4 text-lg font-semibold">Resources</h3>
+        <ul className="space-y-2 text-gray-300">
+          <li>Documentation</li>
+          <li>Help Center</li>
+          <li>Community</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+
+      {/* Social */}
+      <div>
+        <h3 className="mb-4 text-lg font-semibold">Social Links</h3>
+        <div className="flex gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black">
+            ▶
+          </div>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black">
+            f
+          </div>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black">
+            X
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Bottom */}
+    <div className="mt-12 border-t border-white/20 pt-6 flex flex-col items-center justify-between gap-4 text-gray-300 md:flex-row">
+      <p>© 2026 Digitools. All rights reserved.</p>
+
+      <div className="flex gap-6">
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+      </div>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }
