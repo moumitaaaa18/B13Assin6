@@ -2,10 +2,11 @@ import { useState } from "react";
 
 function App() {
   const [activeTab, setActiveTab] = useState("products");
-  const [cartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   const products = [
     {
+      id: 1,
       title: "AI Writing Pro",
       desc: "Generate high-quality content, blogs, and marketing copy in seconds with advanced AI.",
       price: "$29",
@@ -20,6 +21,7 @@ function App() {
       ],
     },
     {
+      id: 2,
       title: "Design Templates Pack",
       desc: "2000+ premium templates for social media, presentations, and marketing materials.",
       price: "$49",
@@ -34,6 +36,7 @@ function App() {
       ],
     },
     {
+      id: 3,
       title: "Premium Stock Assets",
       desc: "Access millions of royalty-free photos, videos, and graphics for your projects.",
       price: "$19",
@@ -48,6 +51,7 @@ function App() {
       ],
     },
     {
+      id: 4,
       title: "SEO Toolkit",
       desc: "Optimize your website ranking and monitor performance with smart SEO tools.",
       price: "$25",
@@ -62,6 +66,7 @@ function App() {
       ],
     },
     {
+      id: 5,
       title: "UI Component Kit",
       desc: "Reusable modern UI components and layouts for faster website and app design.",
       price: "$39",
@@ -76,6 +81,7 @@ function App() {
       ],
     },
     {
+      id: 6,
       title: "Video Editing Pack",
       desc: "Professional video templates, transitions, and effects for creators and editors.",
       price: "$29",
@@ -141,6 +147,19 @@ function App() {
     },
   ];
 
+  const handleAddToCart = (product) => {
+    setCartItems((prev) => [...prev, product]);
+    setActiveTab("cart");
+  };
+
+  const handleRemoveFromCart = (indexToRemove) => {
+    setCartItems((prev) => prev.filter((_, index) => index !== indexToRemove));
+  };
+
+  const handleCheckout = () => {
+    setCartItems([]);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}
@@ -159,10 +178,19 @@ function App() {
           </ul>
 
           <div className="flex items-center gap-3 sm:gap-4">
-            <button className="text-lg sm:text-xl">🛒</button>
+            <button className="relative text-lg sm:text-xl">
+              🛒
+              {cartItems.length > 0 && (
+                <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                  {cartItems.length}
+                </span>
+              )}
+            </button>
+
             <button className="hidden text-sm font-medium text-gray-800 md:block lg:text-[18px]">
               Login
             </button>
+
             <button className="rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white sm:px-5 sm:py-2.5 lg:px-6 lg:py-3 lg:text-[16px]">
               Get Started
             </button>
@@ -243,7 +271,7 @@ function App() {
         </div>
       </section>
 
-      {/* Products Section with Toggling */}
+      {/* Products / Cart Section */}
       <section className="mx-auto max-w-[1400px] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <h2 className="text-center text-3xl font-bold text-[#2d2a6e] sm:text-4xl lg:text-5xl">
           Premium Digital Tools
@@ -274,15 +302,15 @@ function App() {
                 : "bg-gray-100 text-gray-600"
             }`}
           >
-            Cart
+            Cart ({cartItems.length})
           </button>
         </div>
 
         {activeTab === "products" ? (
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {products.map((item, index) => (
+            {products.map((item) => (
               <div
-                key={index}
+                key={item.id}
                 className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md"
               >
                 <div className="flex items-center justify-between">
@@ -313,30 +341,60 @@ function App() {
                   ))}
                 </ul>
 
-                <button className="mt-6 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-500 py-3 text-white">
+                <button
+                  onClick={() => handleAddToCart(item)}
+                  className="mt-6 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-500 py-3 text-white"
+                >
                   Buy Now
                 </button>
               </div>
             ))}
           </div>
         ) : (
-          <div className="mt-12 rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-10 text-center">
+          <div className="mt-12">
             {cartItems.length === 0 ? (
-              <>
+              <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-10 text-center">
                 <h3 className="text-2xl font-semibold text-[#2d2a6e]">
                   Your cart is empty
                 </h3>
                 <p className="mt-3 text-gray-500">
                   No products added to cart yet.
                 </p>
-              </>
+              </div>
             ) : (
-              <div className="space-y-4">
+              <div className="mx-auto max-w-3xl space-y-4">
                 {cartItems.map((item, index) => (
-                  <div key={index} className="rounded-xl bg-white p-4 shadow">
-                    {item.title}
+                  <div
+                    key={`${item.id}-${index}`}
+                    className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center"
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className="text-3xl">{item.icon}</span>
+                      <div>
+                        <h3 className="text-xl font-semibold text-[#2d2a6e]">
+                          {item.title}
+                        </h3>
+                        <p className="text-gray-500">{item.price}</p>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => handleRemoveFromCart(index)}
+                      className="rounded-full bg-red-500 px-5 py-2 text-sm font-medium text-white"
+                    >
+                      Remove
+                    </button>
                   </div>
                 ))}
+
+                <div className="pt-4 text-center">
+                  <button
+                    onClick={handleCheckout}
+                    className="rounded-full bg-gradient-to-r from-blue-600 to-purple-500 px-8 py-3 text-white"
+                  >
+                    Proceed to Checkout
+                  </button>
+                </div>
               </div>
             )}
           </div>
