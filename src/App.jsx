@@ -244,10 +244,10 @@ function App() {
           </div>
         </div>
 
-        <div className="flex justify-center lg:justify-end">
-          <div className="relative h-[300px] w-full max-w-[620px] overflow-hidden bg-[#f3f4fb] sm:h-[380px] md:h-[450px] lg:h-[520px]">
+        <div className="w-full">
+          <div className="relative h-[320px] w-full overflow-hidden rounded-[24px] bg-[#f3f4fb] sm:h-[420px] md:h-[500px] lg:h-[560px]">
             <img
-              src="https://images.unsplash.com/photo-1581090700227-1e8e8d5d3b83?auto=format&fit=crop&w=900&q=80"
+              src="https://images.unsplash.com/photo-1581090700227-1e8e8d5d3b83?auto=format&fit=crop&w=1200&q=80"
               alt="Hero"
               className="h-full w-full object-cover"
             />
