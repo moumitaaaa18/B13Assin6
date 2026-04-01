@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 function App() {
   const [activeTab, setActiveTab] = useState("products");
@@ -9,7 +9,7 @@ function App() {
       id: 1,
       title: "AI Writing Pro",
       desc: "Generate high-quality content, blogs, and marketing copy in seconds with advanced AI.",
-      price: "$29",
+      price: 29,
       type: "/Mo",
       badge: "Best Seller",
       icon: "✍️",
@@ -24,7 +24,7 @@ function App() {
       id: 2,
       title: "Design Templates Pack",
       desc: "2000+ premium templates for social media, presentations, and marketing materials.",
-      price: "$49",
+      price: 49,
       type: "/One Time",
       badge: "Popular",
       icon: "🎨",
@@ -39,7 +39,7 @@ function App() {
       id: 3,
       title: "Premium Stock Assets",
       desc: "Access millions of royalty-free photos, videos, and graphics for your projects.",
-      price: "$19",
+      price: 19,
       type: "/Mo",
       badge: "New",
       icon: "📷",
@@ -54,7 +54,7 @@ function App() {
       id: 4,
       title: "SEO Toolkit",
       desc: "Optimize your website ranking and monitor performance with smart SEO tools.",
-      price: "$25",
+      price: 25,
       type: "/Mo",
       badge: "Trending",
       icon: "🔍",
@@ -69,7 +69,7 @@ function App() {
       id: 5,
       title: "UI Component Kit",
       desc: "Reusable modern UI components and layouts for faster website and app design.",
-      price: "$39",
+      price: 39,
       type: "/One Time",
       badge: "Featured",
       icon: "🧩",
@@ -84,7 +84,7 @@ function App() {
       id: 6,
       title: "Video Editing Pack",
       desc: "Professional video templates, transitions, and effects for creators and editors.",
-      price: "$29",
+      price: 29,
       type: "/Mo",
       badge: "Pro",
       icon: "🎬",
@@ -159,6 +159,10 @@ function App() {
   const handleCheckout = () => {
     setCartItems([]);
   };
+
+  const totalPrice = useMemo(() => {
+    return cartItems.reduce((sum, item) => sum + item.price, 0);
+  }, [cartItems]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -329,7 +333,7 @@ function App() {
                 <p className="mt-3 text-gray-500">{item.desc}</p>
 
                 <h4 className="mt-5 text-3xl font-bold text-[#2d2a6e]">
-                  {item.price}
+                  ${item.price}
                   <span className="text-lg font-normal text-gray-400">
                     {item.type}
                   </span>
@@ -362,39 +366,50 @@ function App() {
                 </p>
               </div>
             ) : (
-              <div className="mx-auto max-w-3xl space-y-4">
-                {cartItems.map((item, index) => (
-                  <div
-                    key={`${item.id}-${index}`}
-                    className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="text-3xl">{item.icon}</span>
-                      <div>
-                        <h3 className="text-xl font-semibold text-[#2d2a6e]">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-500">{item.price}</p>
-                      </div>
-                    </div>
+              <div className="mx-auto max-w-5xl rounded-3xl bg-white p-6 shadow-lg sm:p-8">
+                <h3 className="mb-8 text-2xl font-semibold text-[#2d2a6e]">
+                  Your Cart
+                </h3>
 
-                    <button
-                      onClick={() => handleRemoveFromCart(index)}
-                      className="rounded-full bg-red-500 px-5 py-2 text-sm font-medium text-white"
+                <div className="space-y-4">
+                  {cartItems.map((item, index) => (
+                    <div
+                      key={`${item.id}-${index}`}
+                      className="flex items-center justify-between border-b border-gray-200 pb-4"
                     >
-                      Remove
-                    </button>
-                  </div>
-                ))}
+                      <div className="flex items-center gap-4">
+                        <span className="text-2xl">{item.icon}</span>
+                        <div>
+                          <h4 className="text-lg font-medium text-[#2d2a6e]">
+                            {item.title}
+                          </h4>
+                          <p className="text-sm text-gray-500">${item.price}</p>
+                        </div>
+                      </div>
 
-                <div className="pt-4 text-center">
-                  <button
-                    onClick={handleCheckout}
-                    className="rounded-full bg-gradient-to-r from-blue-600 to-purple-500 px-8 py-3 text-white"
-                  >
-                    Proceed to Checkout
-                  </button>
+                      <button
+                        onClick={() => handleRemoveFromCart(index)}
+                        className="text-sm font-medium text-pink-500"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
                 </div>
+
+                <div className="mt-6 flex items-center justify-between">
+                  <p className="text-lg font-medium text-gray-500">Total</p>
+                  <p className="text-2xl font-bold text-[#2d2a6e]">
+                    ${totalPrice}
+                  </p>
+                </div>
+
+                <button
+                  onClick={handleCheckout}
+                  className="mt-6 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-500 py-3 text-white"
+                >
+                  Proceed To Checkout
+                </button>
               </div>
             )}
           </div>
